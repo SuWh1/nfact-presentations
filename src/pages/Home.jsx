@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom';
 import { days } from '../data/days.js';
 
 export default function Home() {
+  const logo = import.meta.env.BASE_URL + 'nfactorial-logo.png';
   return (
     <div className="home">
+      <img className="home__logo" src={logo} alt="nFactorial" />
       <div className="home__brand">nFactorial Teens</div>
       <h1 className="home__title">Презентации по дням</h1>
       <p className="home__sub">
-        Слайды для показа детям. Стрелки ←/→ листают, F — фуллскрин, N — заметки спикера.
-        Промпты копируются одной кнопкой.
+        Слайды для показа детям. На компьютере — стрелки ←/→, F — полный экран. На телефоне —
+        свайп или тап по краям экрана. Промпты копируются одной кнопкой.
       </p>
 
       <div className="grid">

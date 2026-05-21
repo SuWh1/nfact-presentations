@@ -5,7 +5,14 @@ export default function Slide({ slide }) {
   const { kicker, title, hero, body, list, pills, visual, note, prompt } = slide;
 
   return (
-    <section className="slide">
+    <section className={'slide' + (hero ? ' slide--hero' : '')}>
+      {hero ? (
+        <img
+          className="slide__logo"
+          src={import.meta.env.BASE_URL + 'nfactorial-logo.png'}
+          alt="nFactorial"
+        />
+      ) : null}
       {kicker ? <div className="slide__kicker">{kicker}</div> : null}
       {title ? (
         <h1 className={'slide__title' + (hero ? ' slide__title--hero' : '')}>{title}</h1>

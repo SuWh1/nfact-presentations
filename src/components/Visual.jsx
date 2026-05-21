@@ -5,7 +5,13 @@
 //  - { type: 'table', head: [...], rows: [[...]] }
 //  - { type: 'image', src, caption }
 
+import { useLightbox } from './Lightbox.jsx';
+
+const resolve = (src) =>
+  /^https?:\/\//.test(src) ? src : import.meta.env.BASE_URL + src;
+
 export default function Visual({ visual }) {
+  const open = useLightbox();
   if (!visual) return null;
 
   if (typeof visual === 'string') {
@@ -19,15 +25,20 @@ export default function Visual({ visual }) {
   if (visual.type === 'logos') {
     return (
       <div className="v-logos">
-        {visual.items.map((slug) => (
-          <img
-            key={slug}
-            src={`https://cdn.simpleicons.org/${slug}`}
-            alt={slug}
-            height="64"
-            loading="lazy"
-          />
-        ))}
+        {visual.items.map((slug) => {
+          const src = `https://cdn.simpleicons.org/${slug}`;
+          return (
+            <img
+              key={slug}
+              src={src}
+              alt={slug}
+              height="64"
+              loading="lazy"
+              style={{ cursor: 'zoom-in' }}
+              onClick={() => open(src)}
+            />
+          );
+        })}
       </div>
     );
   }
@@ -62,9 +73,34 @@ export default function Visual({ visual }) {
   if (visual.type === 'image') {
     return (
       <figure className="v-image">
-        <img src={visual.src} alt={visual.caption || ''} loading="lazy" />
+        <img
+          src={resolve(visual.src)}
+          alt={visual.caption || ''}
+          loading="lazy"
+          style={{ cursor: 'zoom-in' }}
+          onClick={() => open(resolve(visual.src))}
+        />
         {visual.caption ? <figcaption>{visual.caption}</figcaption> : null}
       </figure>
+    );
+  }
+
+  if (visual.type === 'images') {
+    const cls =
+      `v-gallery v-gallery--${visual.items.length}` + (visual.cover ? ' v-gallery--cover' : '');
+    return (
+      <div className={cls}>
+        {visual.items.map((src, i) => (
+          <img
+            key={i}
+            src={resolve(src)}
+            alt=""
+            loading="lazy"
+            style={{ cursor: 'zoom-in' }}
+            onClick={() => open(resolve(src))}
+          />
+        ))}
+      </div>
     );
   }
 

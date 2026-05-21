@@ -15,11 +15,13 @@ export default function Prompt({ label, text }) {
 
   return (
     <div className="prompt">
-      <button className="prompt__copy" onClick={copy}>
-        {copied ? 'Скопировано ✓' : 'Копировать'}
-      </button>
-      {label ? <div style={{ opacity: 0.6, marginBottom: 10 }}>{label}</div> : null}
-      {text}
+      <div className="prompt__head">
+        <span className="prompt__label">{label || 'Промпт'}</span>
+        <button className="prompt__copy" onClick={copy}>
+          {copied ? 'Скопировано ✓' : 'Копировать'}
+        </button>
+      </div>
+      <div className="prompt__text">{text}</div>
     </div>
   );
 }

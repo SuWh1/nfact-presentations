@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slide from './Slide.jsx';
 
 export default function Deck({ day }) {
   const [i, setI] = useState(0);
-  const [showNotes, setShowNotes] = useState(false);
   const total = day.slides.length;
+  const touchX = useRef(null);
 
   const go = useCallback(
     (delta) => setI((prev) => Math.min(Math.max(prev + delta, 0), total - 1)),
@@ -20,8 +20,6 @@ export default function Deck({ day }) {
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
         e.preventDefault();
         go(-1);
-      } else if (e.key.toLowerCase() === 'n') {
-        setShowNotes((s) => !s);
       } else if (e.key.toLowerCase() === 'f') {
         toggleFullscreen();
       } else if (e.key === 'Home') {
@@ -39,22 +37,38 @@ export default function Deck({ day }) {
     else document.exitFullscreen?.();
   };
 
+  const onTouchStart = (e) => {
+    touchX.current = e.changedTouches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
+
   const slide = day.slides[i];
 
   return (
-    <div className="deck">
+    <div className="deck" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <div className="bar">
-        <div className="bar__left">
-          <Link to="/">← Все дни</Link>
-          <span>
+        <div className="bar__side">
+          <Link to="/">← Дни</Link>
+        </div>
+        <div className="bar__center">
+          <img
+            className="bar__logo"
+            src={import.meta.env.BASE_URL + 'nfactorial-logo.png'}
+            alt="nFactorial"
+          />
+          <span className="bar__day">
             {day.emoji} {day.title}
           </span>
         </div>
-        <div className="bar__left">
-          <button onClick={() => setShowNotes((s) => !s)}>
-            Заметки (N): {showNotes ? 'вкл' : 'выкл'}
+        <div className="bar__side bar__side--right">
+          <button onClick={toggleFullscreen} title="Полный экран (F)">
+            ⛶ Экран
           </button>
-          <button onClick={toggleFullscreen}>Фуллскрин (F)</button>
           <span className="counter">
             {i + 1} / {total}
           </span>
@@ -63,11 +77,10 @@ export default function Deck({ day }) {
 
       <Slide slide={slide} />
 
-      {showNotes && slide.speaker ? (
-        <div className="notes">
-          <b>Спикер:</b> {slide.speaker}
-        </div>
-      ) : null}
+      <div className="navzones" aria-hidden="true">
+        <button className="navzone navzone--prev" onClick={() => go(-1)} tabIndex={-1} />
+        <button className="navzone navzone--next" onClick={() => go(1)} tabIndex={-1} />
+      </div>
 
       <div className="progress" style={{ width: `${((i + 1) / total) * 100}%` }} />
     </div>
