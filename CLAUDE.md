@@ -51,8 +51,15 @@ say so explicitly — otherwise assume it belongs everywhere.
 - **Idea ambition:** the goal is a product with real-world impact that **could be sold** —
   hard but achievable in Lovable in 2 weeks. Lead with sellable SaaS/tools + games people
   actually play & pay for (Wordle-type daily puzzles, viral quizzes, idle). NOT throwaway
-  childish clones. Avoid game-engine stuff (Snake/Flappy/racing/3D). Idea bank = `💡 Идеи`.
+  childish clones. Games are welcome (incl. Flappy/arcades) — only avoid heavy 3D and
+  realtime multiplayer. Idea bank = `💡 Идеи`.
   Filter test: "would someone pay $1 for this?" Beginners may start simple as a ramp.
+- **Lovable CAN do games (reversed 2026-05-26).** Earlier the deck banned Snake/Flappy
+  ("needs a game engine") — that was wrong, verified in Lovable. Lovable handles real
+  games: Flappy-style arcades, clickers, runners, puzzles, quizzes. Only **heavy 3D** and
+  **realtime multiplayer / low-latency co-op** are out. Be generous with game ideas.
+- **Kahoot quizzes are real files**, not just a schedule line. Ready quizzes live in
+  `kahoot/dayN/` (this repo): `quiz.md` (readable + ✅ answers) and `quiz.csv` (Kahoot import).
 - **Ship daily:** 10 releases in 10 days — by 15:00 each day a new live version is up. The
   product must always work, even on crutches.
 
