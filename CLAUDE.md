@@ -77,8 +77,9 @@ pushing all text off-screen). Before adding any image to `days.js`:
      text overflows the slide.
    - **Wide-short image** (ratio ≳ 2, e.g. an input bar) → single `{type:'image'}`, it sits
      fine inline; the frame hugs it (`.v-image` never letterboxes).
-   - **Set of screenshots** → `{type:'images'}` grid. 3-up tiles crop to `3/4`, 2-up to `16/10`
-     (`object-fit: cover`, top-anchored) so tiles are uniform with no empty frame.
+   - **Set of screenshots** → `{type:'images'}` grid. Tiles use `object-fit: contain` (whole
+     image visible, may show a frame) and collapse to 2-up/1-up on narrow screens. Do NOT force
+     `cover`-crop on the default gallery — on mobile it turned the 3-up into unreadable slivers.
 3. **Never leave a placeholder for something shown live** (mentor's own screen, Kahoot PIN
    generated at host time) — make it text, not a `📸 Скрин сюда` card.
 4. Prefer a **built diagram** (`flow`, `compare`, `login` visual types) over a screenshot
