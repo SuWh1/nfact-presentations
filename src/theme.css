@@ -367,12 +367,10 @@ a {
   max-width: 760px;
 }
 .v-image img {
-  width: 100%;
-  max-height: 46vh;
-  object-fit: contain;
+  max-width: 100%;
+  height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: #fff;
 }
 .v-image figcaption {
   margin-top: 8px;
@@ -392,11 +390,10 @@ a {
 .v-gallery--3 { grid-template-columns: repeat(3, 1fr); }
 .v-gallery img {
   width: 100%;
-  max-height: 46vh;
-  object-fit: contain;
+  height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: #fff;
+  display: block;
 }
 /* uniform tiles (same size, may crop) — for before/after comparisons */
 .v-gallery--cover img {
