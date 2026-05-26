@@ -167,6 +167,22 @@ a {
   margin-right: auto;
 }
 
+.slide--split {
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+.slide__col--text { flex: 1 1 0; min-width: 0; }
+.slide__col--media {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide__col--media .v-image { margin-top: 0; max-width: 100%; }
+.slide__col--media .v-image img { max-height: 74vh; }
+
 .slide__kicker {
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 700;
@@ -345,18 +361,20 @@ a {
   color: var(--ink);
 }
 
-/* image */
+/* image — frame hugs the image, never letterboxes */
 .v-image {
   margin-top: 24px;
-  max-width: 760px;
+  max-width: 820px;
+  text-align: center;
 }
 .v-image img {
-  width: 100%;
-  max-height: 46vh;
+  max-width: 100%;
+  max-height: 52vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: #fff;
 }
 .v-image figcaption {
   margin-top: 8px;
@@ -364,54 +382,53 @@ a {
   color: var(--ink-soft);
 }
 
-/* gallery (multiple screenshots) */
+/* gallery (multiple screenshots) — uniform tiles cropped to fill, no visible frame */
 .v-gallery {
   margin-top: 24px;
   display: grid;
   gap: 16px;
-  max-width: 980px;
+  max-width: 1040px;
+  align-items: start;
 }
 .v-gallery--2 { grid-template-columns: 1fr 1fr; }
 .v-gallery--3 { grid-template-columns: repeat(3, 1fr); }
 .v-gallery img {
   width: 100%;
-  max-height: 46vh;
-  object-fit: contain;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: #fff;
+  display: block;
 }
-/* uniform tiles (same size, may crop) — for before/after comparisons */
-.v-gallery--cover img {
-  aspect-ratio: 16 / 10;
-  max-height: none;
-  height: auto;
-  object-fit: cover;
-}
+/* wide-short screenshots crop badly at 3/4 — keep them landscape */
+.v-gallery--2 img { aspect-ratio: 16 / 10; }
+/* explicit before/after tiles */
+.v-gallery--cover img { aspect-ratio: 16 / 10; }
 
 /* flow diagram (boxes + arrows) */
 .v-flow {
   margin-top: 28px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: stretch;
-  gap: 8px;
-  max-width: 980px;
+  gap: 10px;
 }
 .v-flow__row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .v-flow__box {
   background: var(--bg-elev);
   border: 1.5px solid var(--line);
   border-radius: 16px;
   padding: 18px 20px;
-  min-width: clamp(140px, 18vw, 210px);
+  min-width: clamp(120px, 13vw, 190px);
   text-align: center;
   box-shadow: 0 6px 20px rgba(26, 26, 26, 0.05);
 }
+.v-flow__arrow { flex-shrink: 0; }
 .v-flow__emoji { font-size: clamp(30px, 4vw, 46px); line-height: 1; }
 .v-flow__title {
   margin-top: 10px;
@@ -644,6 +661,8 @@ a {
   .v-flow { flex-direction: column; align-items: stretch; }
   .v-flow__row { flex-direction: column; }
   .v-flow__arrow { transform: rotate(90deg); }
+  .slide--split { flex-direction: column; align-items: stretch; gap: 18px; }
+  .slide__col--media .v-image img { max-height: 38vh; }
   .v-code {
     font-size: 12px;
     padding: 16px;

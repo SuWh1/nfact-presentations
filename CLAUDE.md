@@ -63,6 +63,27 @@ say so explicitly — otherwise assume it belongs everywhere.
 - **Ship daily:** 10 releases in 10 days — by 15:00 each day a new live version is up. The
   product must always work, even on crutches.
 
+## Images in slides — always check size & shape, pick the right layout
+
+Images broke layout twice (letterbox frames bigger than the photo; a square image
+pushing all text off-screen). Before adding any image to `days.js`:
+
+1. **Check intrinsic dimensions** (`file public/<img>` or `sips -g pixelWidth -g pixelHeight`).
+   Always pass `w`/`h` on `{type:'image'|'images'}` entries — this reserves space so text
+   doesn't jump while the image loads (CLS fix in `Visual.jsx`).
+2. **Match the visual to the shape:**
+   - **Tall / square image** (ratio ≲ 1.3, e.g. ikigai, portrait screenshot) → put it on a
+     `split: true` slide (image one column, text the other). A big square stacked above/below
+     text overflows the slide.
+   - **Wide-short image** (ratio ≳ 2, e.g. an input bar) → single `{type:'image'}`, it sits
+     fine inline; the frame hugs it (`.v-image` never letterboxes).
+   - **Set of screenshots** → `{type:'images'}` grid. 3-up tiles crop to `3/4`, 2-up to `16/10`
+     (`object-fit: cover`, top-anchored) so tiles are uniform with no empty frame.
+3. **Never leave a placeholder for something shown live** (mentor's own screen, Kahoot PIN
+   generated at host time) — make it text, not a `📸 Скрин сюда` card.
+4. Prefer a **built diagram** (`flow`, `compare`, `login` visual types) over a screenshot
+   placeholder when the concept is explanatory rather than a real UI capture.
+
 ## Site build
 
 ```bash
