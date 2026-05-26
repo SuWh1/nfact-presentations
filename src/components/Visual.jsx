@@ -3,12 +3,34 @@
 //  - { type: 'logos', items: ['telegram','tiktok'] }
 //  - { type: 'code', code: '...' }
 //  - { type: 'table', head: [...], rows: [[...]] }
-//  - { type: 'image', src, caption }
+//  - { type: 'image', src, w, h, caption }   ← w/h reserve space, no layout jump
+//  - { type: 'images', items: [{src,w,h} | 'a.png'], cover }
+//  - { type: 'flow', steps: [{ emoji, title, sub }] }       ← boxes + arrows
+//  - { type: 'compare', items: [{ tone:'bad'|'good', title, lines:[...] }] }
+//  - { type: 'login' }                                      ← login/password card
 
 import { useLightbox } from './Lightbox.jsx';
 
 const resolve = (src) =>
   /^https?:\/\//.test(src) ? src : import.meta.env.BASE_URL + src;
+
+function Img({ entry, className }) {
+  const open = useLightbox();
+  const src = typeof entry === 'string' ? entry : entry.src;
+  const full = resolve(src);
+  const dims = typeof entry === 'string' ? {} : { width: entry.w, height: entry.h };
+  return (
+    <img
+      className={className}
+      src={full}
+      alt=""
+      {...dims}
+      loading="lazy"
+      style={{ cursor: 'zoom-in' }}
+      onClick={() => open(full)}
+    />
+  );
+}
 
 export default function Visual({ visual }) {
   const open = useLightbox();
@@ -47,6 +69,56 @@ export default function Visual({ visual }) {
     return <pre className="v-code">{visual.code}</pre>;
   }
 
+  if (visual.type === 'flow') {
+    return (
+      <div className="v-flow">
+        {visual.steps.map((s, i) => (
+          <div className="v-flow__row" key={i}>
+            <div className="v-flow__box">
+              <div className="v-flow__emoji">{s.emoji}</div>
+              <div className="v-flow__title">{s.title}</div>
+              <div className="v-flow__sub">{s.sub}</div>
+            </div>
+            {i < visual.steps.length - 1 ? <div className="v-flow__arrow">→</div> : null}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (visual.type === 'compare') {
+    return (
+      <div className="v-compare">
+        {visual.items.map((it, i) => (
+          <div className={'v-compare__card v-compare__card--' + it.tone} key={i}>
+            <div className="v-compare__head">{it.tone === 'bad' ? '🚫' : '✅'} {it.title}</div>
+            <ul>
+              {it.lines.map((l, j) => (
+                <li key={j}>{l}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (visual.type === 'login') {
+    return (
+      <div className="v-login">
+        <div className="v-login__row">
+          <span className="v-login__label">Логин</span>
+          <span className="v-login__value">···············</span>
+        </div>
+        <div className="v-login__row">
+          <span className="v-login__label">Пароль</span>
+          <span className="v-login__value">···············</span>
+        </div>
+        <div className="v-login__hint">lovable.dev — вписать перед занятием</div>
+      </div>
+    );
+  }
+
   if (visual.type === 'table') {
     return (
       <table className="v-table">
@@ -73,13 +145,7 @@ export default function Visual({ visual }) {
   if (visual.type === 'image') {
     return (
       <figure className="v-image">
-        <img
-          src={resolve(visual.src)}
-          alt={visual.caption || ''}
-          loading="lazy"
-          style={{ cursor: 'zoom-in' }}
-          onClick={() => open(resolve(visual.src))}
-        />
+        <Img entry={visual} />
         {visual.caption ? <figcaption>{visual.caption}</figcaption> : null}
       </figure>
     );
@@ -90,15 +156,8 @@ export default function Visual({ visual }) {
       `v-gallery v-gallery--${visual.items.length}` + (visual.cover ? ' v-gallery--cover' : '');
     return (
       <div className={cls}>
-        {visual.items.map((src, i) => (
-          <img
-            key={i}
-            src={resolve(src)}
-            alt=""
-            loading="lazy"
-            style={{ cursor: 'zoom-in' }}
-            onClick={() => open(resolve(src))}
-          />
+        {visual.items.map((entry, i) => (
+          <Img key={i} entry={entry} />
         ))}
       </div>
     );
