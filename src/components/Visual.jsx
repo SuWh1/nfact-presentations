@@ -86,6 +86,29 @@ export default function Visual({ visual }) {
     );
   }
 
+  if (visual.type === 'mvp') {
+    const row = (data, tone) => (
+      <div className={'v-mvp__row v-mvp__row--' + tone}>
+        <div className="v-mvp__label">{tone === 'bad' ? '🚫' : '✅'} {data.label}</div>
+        <div className="v-mvp__track">
+          {data.steps.map((s, i) => (
+            <div className="v-mvp__step" key={i}>
+              <span className="v-mvp__chip">{s}</span>
+              {i < data.steps.length - 1 ? <span className="v-mvp__arrow">→</span> : null}
+            </div>
+          ))}
+        </div>
+        <div className="v-mvp__cap">{data.caption}</div>
+      </div>
+    );
+    return (
+      <div className="v-mvp">
+        {row(visual.bad, 'bad')}
+        {row(visual.good, 'good')}
+      </div>
+    );
+  }
+
   if (visual.type === 'compare') {
     return (
       <div className="v-compare">
