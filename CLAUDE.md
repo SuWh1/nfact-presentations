@@ -87,15 +87,32 @@ pushing all text off-screen). Before adding any image to `days.js`:
 
 ## Keep slide text short enough to fit one screen — especially in `split: true`
 
-Slides don't scroll on desktop; overflowing text gets cut off. A `split: true` slide puts ALL
-text (kicker + title + body + list + note) into a ~half-width column, so the limit is much
-tighter than a full-width slide. Before adding/editing a slide:
+Slides DON'T scroll on desktop; whatever overflows the viewport is silently cut off. This
+overflowed three times in a row (deepfake, gallery) — treat it as the #1 recurring bug.
 
-- `body` on a split slide: aim for ≤ ~140 chars / 2 short sentences. Full-width: ≤ ~240 chars.
-- Don't stack a long `body` + long `note` + `list` on the same split slide — move detail to
-  `speaker` (presenter notes, not rendered on the slide face) or split into two slides.
-- After editing, mentally (or in browser) check the longest slide actually fits 1920×1080 and
-  a laptop 1440×900. Overflow = cut text = broken slide.
+**Why it happens:** the title font is huge (`clamp(30px, 5.2vw, 64px)`) and Russian text wraps
+wide, so a long title alone can eat 4 lines. In `split: true` the WHOLE text stack (kicker +
+title + body + list + note) is crammed into a ~half-width column — the big title wraps even
+more, and body + note fall off the bottom.
+
+**Budgets — stay under these:**
+
+| field | full-width slide | `split: true` slide |
+|-------|------------------|---------------------|
+| `title` | ≤ ~40 chars (≤ 2 lines) | ≤ ~28 chars (it wraps to 3–4 lines in half width) |
+| `body` | ≤ ~240 chars / 3 sentences | ≤ ~110 chars / 2 short sentences |
+| `note` | 1 short line | 1 short line (or drop it) |
+
+**Rules:**
+- On a `split` slide, pick ONE of {long body} or {note} — never both long. Push everything
+  else into `speaker` (presenter notes, NOT rendered on the slide face).
+- A `list` of 3+ items on a `split` slide usually overflows — make it full-width, or convert
+  to a `flow`/`compare` visual on a `split`.
+- Shorten the TITLE first when something doesn't fit — it costs the most vertical space.
+- Numbers/examples (e.g. "$25 млн", "10 секунд") can live in `speaker`; the slide face only
+  needs the headline idea.
+- After editing, actually look at the longest slide at 1920×1080 AND laptop 1440×900. If the
+  bottom line is clipped, trim — don't ship it.
 
 ## Site build
 
