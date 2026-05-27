@@ -35,6 +35,23 @@ say so explicitly — otherwise assume it belongs everywhere.
 - [ ] Kids Notion page(s) updated (or explicitly noted as mentor-only)
 - [ ] Shared pages checked (School / Adaptive Tracks / For Parents / Идеи / Шаблон дня)
 - [ ] Searched Notion for stale copies of the old wording (e.g. removed "Stripe", "14+")
+- [ ] **Slide ORDER matches the mentor plan order** (see below)
+
+### ALWAYS sync Notion, and keep the ORDER matched
+
+Editing or building a day is NOT done until BOTH happen:
+
+1. **Sync all three text surfaces** — site `days.js`, mentor Notion, kids Notion. Never update
+   only the site. If Notion is disconnected, say so and sync as soon as it reconnects; don't
+   silently skip it.
+2. **Match the order.** The site slide sequence must follow the **mentor plan's section order**
+   for that day (recap → safety → concept → LIVE → prompts → tools → Kahoot → workshop →
+   your-turn → Testing Party → итог). Before finishing a day: fetch the mentor page, list its
+   blocks top-to-bottom, and confirm the slides appear in the same order. Move slides to match —
+   don't leave the deck and the plan in different sequences.
+
+Per-day workflow: build/edit site slides → fetch mentor page, align order → update mentor page →
+update kids page (kid-facing tone) → `npm run build` → commit + push.
 
 ## Locked curriculum decisions (don't silently reverse)
 
