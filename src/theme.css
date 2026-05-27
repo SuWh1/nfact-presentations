@@ -475,9 +475,10 @@ a {
 .v-flow {
   margin-top: 28px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: stretch;
-  gap: 10px;
+  justify-content: center;
+  gap: 10px 8px;
 }
 .v-flow__row {
   display: flex;
@@ -489,7 +490,7 @@ a {
   border: 1.5px solid var(--line);
   border-radius: 16px;
   padding: 18px 20px;
-  min-width: clamp(120px, 13vw, 190px);
+  min-width: clamp(110px, 11vw, 170px);
   text-align: center;
   box-shadow: 0 6px 20px rgba(26, 26, 26, 0.05);
 }
