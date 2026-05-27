@@ -1063,6 +1063,7 @@ const day7 = {
     {
       kicker: 'Подсмотри у лучших',
       title: 'Целый сайт про онбординг',
+      split: true,
       body: 'useronboard.com разбирает, как встречают новичков топ-приложения. Открой — и копируй приёмы.',
       visual: { type: 'image', src: 'onboard.png', w: 2158, h: 1186, caption: 'useronboard.com — разборы онбординга реальных продуктов' },
       note: 'Источник: useronboard.com/onboarding-ux-patterns',
