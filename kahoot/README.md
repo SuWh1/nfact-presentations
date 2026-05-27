@@ -10,6 +10,7 @@
 | 4 | [day4/](day4/) | Геймификация, крючки, Hook, Octalysis |
 | 5 | [day5/](day5/) | AI внутри продукта, system prompt, guardrails, DeepSeek |
 | 6 | [day6/](day6/) | Фидбэк, правило 5 секунд, запуск к людям |
+| 7 | [day7/](day7/) | Онбординг, первый экран, success state, tooltips |
 
 ## Как запустить
 
