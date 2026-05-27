@@ -77,6 +77,8 @@ update kids page (kid-facing tone) → `npm run build` → commit + push.
   **realtime multiplayer / low-latency co-op** are out. Be generous with game ideas.
 - **Kahoot quizzes are real files**, not just a schedule line. Ready quizzes live in
   `kahoot/dayN/` (this repo): `quiz.md` (readable + ✅ answers) and `quiz.csv` (Kahoot import).
+  They are ALSO mirrored in Notion under the **🎲 Kahoot — квизы по дням** folder (one sub-page
+  per day, questions + ✅ answers). When you add/change a day's quiz, update both repo + Notion.
 - **Ship daily:** 10 releases in 10 days — by 15:00 each day a new live version is up. The
   product must always work, even on crutches.
 
