@@ -82,8 +82,23 @@ pushing all text off-screen). Before adding any image to `days.js`:
      `cover`-crop on the default gallery — on mobile it turned the 3-up into unreadable slivers.
 3. **Never leave a placeholder for something shown live** (mentor's own screen, Kahoot PIN
    generated at host time) — make it text, not a `📸 Скрин сюда` card.
-4. Prefer a **built diagram** (`flow`, `compare`, `login`, `mvp` visual types) over a screenshot
-   placeholder when the concept is explanatory rather than a real UI capture.
+4. Prefer a **built diagram** (`flow`, `compare`, `login`, `mvp`, `palette`, `table`, `code`
+   visual types) over a screenshot placeholder when the concept is explanatory rather than a real
+   UI capture.
+
+## Default to self-made visuals, NOT photos
+
+A text-only slide should get a **built visual**, not a photo. Build it yourself with the existing
+visual types (`flow`, `compare`, `palette`, `mvp`, `table`, `code`, `logos`) — these are on-brand,
+never break layout, and need no asset. Add a new visual type to `Visual.jsx` if a concept needs
+one. **Don't reach for a photo just to fill space.**
+
+Use a real photo ONLY when the slide genuinely needs a specific real-world capture (a UI
+screenshot of Lovable, a news/deepfake image, the MVP cartoon). In that case:
+- If the photo already exists in `public/`, use it (with `w`/`h`, right layout per the rules above).
+- If it must be supplied later, leave a **placeholder** — the `visual: 'описание…'` string renders
+  a `📸 Скрин сюда:` card. Describe exactly what photo goes there so it's obvious what to capture.
+- Never leave a placeholder for something the mentor shows live (their own screen, a Kahoot PIN).
 
 ## Keep slide text short enough to fit one screen — especially in `split: true`
 
