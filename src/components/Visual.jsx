@@ -109,6 +109,25 @@ export default function Visual({ visual }) {
     );
   }
 
+  if (visual.type === 'palette') {
+    return (
+      <div className="v-palette">
+        {visual.items.map((p, i) => (
+          <div className="v-palette__row" key={i}>
+            <div className="v-palette__name">{p.name}</div>
+            <div className="v-palette__chips">
+              {p.colors.map((c, j) => (
+                <div className="v-palette__chip" key={j} style={{ background: c }}>
+                  <span className="v-palette__hex">{c}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   if (visual.type === 'compare') {
     return (
       <div className="v-compare">

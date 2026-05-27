@@ -494,6 +494,45 @@ a {
   font-weight: 700;
 }
 
+/* color palette swatches */
+.v-palette {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 860px;
+}
+.v-palette__row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.v-palette__name {
+  font-weight: 800;
+  font-size: clamp(15px, 1.9vw, 22px);
+  color: var(--ink);
+  min-width: clamp(80px, 10vw, 130px);
+}
+.v-palette__chips { display: flex; gap: 10px; flex: 1; }
+.v-palette__chip {
+  flex: 1;
+  height: clamp(48px, 7vw, 84px);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+}
+.v-palette__hex {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: clamp(10px, 1.1vw, 13px);
+  background: rgba(255, 255, 255, 0.85);
+  color: #1a1a1a;
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
 /* good vs bad comparison */
 .v-compare {
   margin-top: 26px;

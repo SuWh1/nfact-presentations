@@ -82,8 +82,20 @@ pushing all text off-screen). Before adding any image to `days.js`:
      `cover`-crop on the default gallery — on mobile it turned the 3-up into unreadable slivers.
 3. **Never leave a placeholder for something shown live** (mentor's own screen, Kahoot PIN
    generated at host time) — make it text, not a `📸 Скрин сюда` card.
-4. Prefer a **built diagram** (`flow`, `compare`, `login` visual types) over a screenshot
+4. Prefer a **built diagram** (`flow`, `compare`, `login`, `mvp` visual types) over a screenshot
    placeholder when the concept is explanatory rather than a real UI capture.
+
+## Keep slide text short enough to fit one screen — especially in `split: true`
+
+Slides don't scroll on desktop; overflowing text gets cut off. A `split: true` slide puts ALL
+text (kicker + title + body + list + note) into a ~half-width column, so the limit is much
+tighter than a full-width slide. Before adding/editing a slide:
+
+- `body` on a split slide: aim for ≤ ~140 chars / 2 short sentences. Full-width: ≤ ~240 chars.
+- Don't stack a long `body` + long `note` + `list` on the same split slide — move detail to
+  `speaker` (presenter notes, not rendered on the slide face) or split into two slides.
+- After editing, mentally (or in browser) check the longest slide actually fits 1920×1080 and
+  a laptop 1440×900. Overflow = cut text = broken slide.
 
 ## Site build
 
