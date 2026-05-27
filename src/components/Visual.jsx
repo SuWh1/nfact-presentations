@@ -8,6 +8,7 @@
 //  - { type: 'flow', steps: [{ emoji, title, sub }] }       ← boxes + arrows
 //  - { type: 'compare', items: [{ tone:'bad'|'good', title, lines:[...] }] }
 //  - { type: 'login' }                                      ← login/password card
+//  - { type: 'phone', items: [{ demo, cls, label }] }       ← annotated phone screen
 
 import { useLightbox } from './Lightbox.jsx';
 
@@ -157,6 +158,29 @@ export default function Visual({ visual }) {
           <span className="v-login__value">···············</span>
         </div>
         <div className="v-login__hint">lovable.dev — вписать перед занятием</div>
+      </div>
+    );
+  }
+
+  if (visual.type === 'phone') {
+    return (
+      <div className="v-phone">
+        <div className="v-phone__frame">
+          <div className="v-phone__notch" />
+          {visual.items.map((it, i) => (
+            <div className={'v-phone__el v-phone__el--' + it.cls} key={i}>
+              {it.demo}
+            </div>
+          ))}
+        </div>
+        <div className="v-phone__labels">
+          {visual.items.map((it, i) => (
+            <div className="v-phone__label" key={i}>
+              <span className="v-phone__arrow">←</span>
+              {it.label}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

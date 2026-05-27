@@ -361,6 +361,74 @@ a {
   color: var(--ink);
 }
 
+/* phone mockup (annotated screen) */
+.v-phone {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 3vw, 44px);
+}
+.v-phone__frame {
+  flex: 0 0 auto;
+  position: relative;
+  width: clamp(190px, 23vw, 270px);
+  background: var(--bg-elev);
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  padding: 30px 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(26, 26, 26, 0.1);
+}
+.v-phone__notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--ink);
+  opacity: 0.55;
+}
+.v-phone__el {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: clamp(13px, 1.5vw, 17px);
+  padding: 8px 10px;
+}
+.v-phone__el--welcome { background: var(--ink); color: #fff; }
+.v-phone__el--tip { background: #fff; border: 1.5px dashed var(--clay); color: var(--clay); }
+.v-phone__el--progress { background: #fff; border: 1.5px solid var(--line); color: var(--ink-soft); letter-spacing: 1px; }
+.v-phone__el--success { background: #f0f8f3; border: 1.5px solid #b6d8c2; color: #1d6f42; }
+.v-phone__labels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 30px;
+}
+.v-phone__label {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(14px, 1.7vw, 21px);
+  color: var(--ink);
+  line-height: 1.3;
+}
+.v-phone__arrow {
+  color: var(--clay);
+  font-weight: 800;
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
 /* image */
 .v-image {
   margin-top: 24px;
