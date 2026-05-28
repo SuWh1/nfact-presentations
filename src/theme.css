@@ -854,8 +854,8 @@ a {
 }
 .notion-qr:hover { transform: translateY(-2px); }
 .notion-qr img {
-  width: clamp(56px, 6.4vw, 92px);
-  height: clamp(56px, 6.4vw, 92px);
+  width: clamp(110px, 11vw, 170px);
+  height: clamp(110px, 11vw, 170px);
   display: block;
   image-rendering: pixelated;
 }
