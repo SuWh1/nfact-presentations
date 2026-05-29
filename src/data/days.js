@@ -224,7 +224,7 @@ const day1 = {
         '2. Отсканируй QR → откроется invite-ссылка',
         '3. Нажми «Accept invite» — ты в workspace nFactorial Teens',
       ],
-      visual: { type: 'image', src: 'lovable-invite-qr.png', w: 800, h: 800, caption: 'Сканируй камерой телефона' },
+      visual: { type: 'image', src: 'lovable-invite-qr.png', w: 800, h: 800 },
       speaker: 'Каждый ребёнок — свой логин (бесплатный аккаунт), все 15 в одном workspace. Так работает per-member лимит 200 кредитов. QR ведёт на lovable.dev/workspace-invite/b832708e-b9af-4307-a657-fde92b8cf6f9 — invite живёт 5 дней.',
     },
     {
