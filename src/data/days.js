@@ -218,13 +218,14 @@ const day1 = {
     {
       kicker: 'Вход · регистрация',
       title: 'Заходим в workspace лагеря',
+      split: true,
       list: [
         '1. Зарегистрируйся на lovable.dev (свой email, бесплатный аккаунт)',
-        '2. Перейди по invite-ссылке нашего workspace',
-        '3. Подтверди вход — попадёшь в общий workspace nFactorial Teens',
+        '2. Отсканируй QR → откроется invite-ссылка',
+        '3. Нажми «Accept invite» — ты в workspace nFactorial Teens',
       ],
-      note: '🔗 Invite-ссылка: lovable.dev/workspace-invite/b832708e-b9af-4307-a657-fde92b8cf6f9 — продублирована в Notion дня 1.',
-      speaker: 'Каждый ребёнок — свой логин (бесплатный аккаунт), все 15 в одном workspace. Так работает per-member лимит 200 кредитов. Ссылку дай в Telegram заранее — она живёт 5 дней.',
+      visual: { type: 'image', src: 'lovable-invite-qr.png', w: 800, h: 800, caption: 'Сканируй камерой телефона' },
+      speaker: 'Каждый ребёнок — свой логин (бесплатный аккаунт), все 15 в одном workspace. Так работает per-member лимит 200 кредитов. QR ведёт на lovable.dev/workspace-invite/b832708e-b9af-4307-a657-fde92b8cf6f9 — invite живёт 5 дней.',
     },
     {
       kicker: 'Твоя очередь',
