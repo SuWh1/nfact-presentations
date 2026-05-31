@@ -147,6 +147,11 @@ more, and body + note fall off the bottom.
   needs the headline idea.
 - After editing, actually look at the longest slide at 1920×1080 AND laptop 1440×900. If the
   bottom line is clipped, trim — don't ship it.
+- **Gallery slides (`type: 'images'` with 3-4 wide screenshots) clip the bottom `note` almost
+  every time** — the huge title + tall images fill the viewport. Default: keep title ≤22 chars
+  AND push the explanation into `speaker`, not `note`. If you really want a `note`, drop the
+  `kicker` and trim title to ≤18 chars to free vertical space. Caught 2026-05-31 — the games
+  gallery (4 wide screenshots in 2×2) silently swallowed its note line.
 
 ## Site build
 
