@@ -187,7 +187,7 @@ const day1 = {
     {
       kicker: 'Экономия кредитов',
       title: 'Сначала через ChatGPT',
-      body: 'ChatGPT бесплатный — гоняй там сколько хочешь. Lovable кредиты будут целее.',
+      body: 'Набросай идею в ChatGPT/DeepSeek → попроси переписать как чёткий промпт (добавь детали, структуру, цвета) → копируй в Lovable. ChatGPT бесплатный — Lovable кредиты целее.',
       visual: {
         type: 'flow',
         steps: [
