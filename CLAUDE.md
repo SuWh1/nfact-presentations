@@ -152,6 +152,11 @@ more, and body + note fall off the bottom.
   AND push the explanation into `speaker`, not `note`. If you really want a `note`, drop the
   `kicker` and trim title to ≤18 chars to free vertical space. Caught 2026-05-31 — the games
   gallery (4 wide screenshots in 2×2) silently swallowed its note line.
+- **Flow slides (`type: 'flow'` with 3 boxes) clip the bottom `note` when title wraps to 2
+  lines OR body is more than 1 sentence.** The 3 flow boxes need vertical room; combined with
+  huge title + multi-line body, a `note` at the bottom drops off. Default: title ≤25 chars
+  (1 line), body ≤120 chars (1 sentence), no `note` — push elaboration into `speaker`. Caught
+  2026-05-31 — the «Сначала через ChatGPT» slide hid its closing line.
 
 ## Site build
 
