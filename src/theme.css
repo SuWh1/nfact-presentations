@@ -9,7 +9,7 @@
   --code-bg: #1c1b19;
   --code-ink: #f3f0e9;
   --radius: 18px;
-  --maxw: 1100px;
+  --maxw: 1240px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--ink);
 }
@@ -451,7 +451,8 @@ a {
   margin-top: 24px;
   display: grid;
   gap: 16px;
-  max-width: 980px;
+  max-width: 100%;
+  width: 100%;
   align-items: start;
 }
 .v-gallery--2 { grid-template-columns: 1fr 1fr; }
