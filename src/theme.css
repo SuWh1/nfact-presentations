@@ -456,6 +456,8 @@ a {
 }
 .v-gallery--2 { grid-template-columns: 1fr 1fr; }
 .v-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+.v-gallery--4 { grid-template-columns: 1fr 1fr; }
+.v-gallery--7 { grid-template-columns: repeat(3, 1fr); }
 .v-gallery img {
   width: 100%;
   height: auto;
