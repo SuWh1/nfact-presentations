@@ -629,7 +629,7 @@ const day3 = {
       body: 'Открой GitHub с готовыми темами → выбери одну → команда npx getdesign@latest add <имя> в Lovable. У всех будут разные стили.',
       split: true,
       visual: { type: 'image', src: 'collectionDesign.png', w: 1800, h: 976 },
-      note: 'Полная галерея — в Notion дня 3.',
+      note: 'github.com/VoltAgent/awesome-design-md',
       speaker: 'Покажи ссылку на проекторе. Каждый выбирает свой стиль из 8-10 готовых. Команда одна — отличается только имя темы.',
     },
     {
