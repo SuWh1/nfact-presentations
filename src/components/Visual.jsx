@@ -6,6 +6,7 @@
 //  - { type: 'image', src, w, h, caption }   ← w/h reserve space, no layout jump
 //  - { type: 'images', items: [{src,w,h} | 'a.png'], cover }
 //  - { type: 'flow', steps: [{ emoji, title, sub }] }       ← boxes + arrows
+//  - { type: 'gittree', commits: [{ emoji, label, sub }] }  ← growing branch, leaf = version
 //  - { type: 'compare', items: [{ tone:'bad'|'good', title, lines:[...] }] }
 //  - { type: 'login' }                                      ← login/password card
 //  - { type: 'phone', items: [{ demo, cls, label }] }       ← annotated phone screen
@@ -83,6 +84,22 @@ export default function Visual({ visual }) {
             {i < visual.steps.length - 1 ? <div className="v-flow__arrow">→</div> : null}
           </div>
         ))}
+      </div>
+    );
+  }
+
+  if (visual.type === 'gittree') {
+    return (
+      <div className="v-gittree">
+        <div className="v-gittree__line">
+          {visual.commits.map((c, i) => (
+            <div className="v-gittree__node" key={i}>
+              <div className="v-gittree__dot">{c.emoji || '🍃'}</div>
+              <div className="v-gittree__label">{c.label}</div>
+              {c.sub ? <div className="v-gittree__sub">{c.sub}</div> : null}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

@@ -503,6 +503,63 @@ a {
 }
 .v-flow__arrow { flex-shrink: 0; }
 
+/* git tree — growing branch, each leaf is a saved version */
+.v-gittree {
+  margin-top: 32px;
+  width: 100%;
+}
+.v-gittree__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 6px;
+}
+.v-gittree__line::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 28px;
+  height: 5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #b99a6b, #8bbf73);
+  z-index: 0;
+}
+.v-gittree__node {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.v-gittree__dot {
+  width: clamp(46px, 5vw, 60px);
+  height: clamp(46px, 5vw, 60px);
+  border-radius: 50%;
+  background: var(--bg-elev);
+  border: 3px solid #8bbf73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 2.6vw, 28px);
+  box-shadow: 0 6px 18px rgba(26, 26, 26, 0.07);
+}
+.v-gittree__label {
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: clamp(14px, 1.5vw, 18px);
+}
+.v-gittree__sub {
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-size: clamp(11px, 1.2vw, 15px);
+  padding: 0 4px;
+}
+
 /* mvp principle (ship a working product every day) */
 .v-mvp {
   margin-top: 26px;
