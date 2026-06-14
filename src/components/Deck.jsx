@@ -77,18 +77,16 @@ export default function Deck({ day }) {
 
       <Slide slide={slide} />
 
-      {slide.visual?.src === 'lovable-invite-qr.png' ? null : (
-        <a
-          className="notion-qr"
-          href="https://www.notion.so/nfactorial-group/Batch-251-Teens-36827798ee09802e9c3ae66ec31609a3?source=copy_link"
-          target="_blank"
-          rel="noreferrer"
-          title="Notion · Batch 251 Teens"
-        >
-          <img src={import.meta.env.BASE_URL + 'notion-qr.png'} alt="QR · Notion Batch 251 Teens" />
-          <span>Notion</span>
-        </a>
-      )}
+      <a
+        className="notion-qr"
+        href="https://www.notion.so/nfactorial-group/Batch-251-Teens-36827798ee09802e9c3ae66ec31609a3?source=copy_link"
+        target="_blank"
+        rel="noreferrer"
+        title="Notion · Batch 251 Teens"
+      >
+        <img src={import.meta.env.BASE_URL + 'notion-qr.png'} alt="QR · Notion Batch 251 Teens" />
+        <span>Notion</span>
+      </a>
 
       <div className="navzones" aria-hidden="true">
         <button className="navzone navzone--prev" onClick={() => go(-1)} tabIndex={-1} />

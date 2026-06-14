@@ -53,34 +53,58 @@ Editing or building a day is NOT done until BOTH happen:
 Per-day workflow: build/edit site slides → fetch mentor page, align order → update mentor page →
 update kids page (kid-facing tone) → `npm run build` → commit + push.
 
+## BATCH 2 (current) — stack switch from Lovable to real-world dev
+
+Batch 1 ran on **Lovable** and it's now retired: token-metered, kids burned €700 in 3 days.
+Batch 2 (24 kids) runs on the **real developer stack** — flat monthly cost, real skills.
+
+- **Tools (locked):** **Codex (4 shared accounts, ~6 kids each) + Claude (1 account)**. Codex is
+  the everyday tool; Claude/Claude Code is the premium tool for the mentor + the fastest kids.
+- **Stack (locked):** **Vite + React + TypeScript + Supabase + Vercel**, with **GitHub + git +
+  Node + VSCode** as the local toolchain. Supabase = managed DB + auth + storage (no server to
+  run). Vercel = auto-deploy on every `git push`, plus preview URLs per branch.
+- **Per-kid infrastructure:** each kid owns **their own GitHub repo + Supabase project + Vercel
+  project**. Fully isolated; they keep everything after camp.
+- **Starter template repo:** `presentations/nfact-teens-starter/` (sibling of `nfact-presentations/`).
+  Vite+React+TS pre-wired to Supabase (env vars), example table + auth + profile, `vercel.json`,
+  `.env.example`, kid-readable README. Kids click **"Use this template"** on GitHub — they do NOT
+  scaffold from zero. The mentor uploads this repo to GitHub before camp and shares its link.
+- **The Codex loop (the core skill):** *prompt Codex → read the diff → does it still run + does
+  Vercel build pass → commit → auto-deploy*. Reading/approving real code changes is new vs Lovable's
+  sandbox — teach the "does it run?" checkpoint.
+
 ## Locked curriculum decisions (don't silently reverse)
 
-- **No Stripe.** Removed everywhere (doesn't work in the US). Day 8 afternoon = analytics
-  for everyone + extra for fast kids (own domain, integrations, more real users).
+- **AI safety is Notion-only, NOT on slides.** Batch 2 removes all AI-safety slides from `days.js`.
+  KEEP the AI-safety blocks in the Notion mentor + kids pages (still part of the daily plan, just
+  not projected). Never add an AI-safety slide back to the deck.
+- **No Stripe.** Removed everywhere (doesn't work in the US). Payments are never part of the build;
+  the "real users" day is about sharing the live link + collecting feedback, not monetization.
 - **Tone:** kids are 14–16 and tech-savvy. No Gen-Alpha slang, no babyish/condescending
   explanations, no "18+"/"14+" framing — soften to "only friendly topics" etc.
 - **Palette:** slides use the premium Claude palette (cream `#F5F4EF`, clay `#D97757`,
-  ink `#1A1A1A`, Inter). The Quiz Battle product itself stays bright; slides stay premium.
+  ink `#1A1A1A`, Inter). Product screenshots can be bright; slides stay premium.
 - **Ideal day schedule:** front-load teaching (lecture + LIVE workshop in the morning),
   then ~3.5h of self-building split around a 30-min lunch, 5-min morning exercise, daily
   Kahoot, mid-morning 15-min Trivia, phones only at lunch. Lives in mentor pages +
   `Шаблон дня` + For Parents (not on the site).
+- **10-day shape (batch 2):** Days 1–2 = setup (install + accounts + first deploy live).
+  Days 3–7 = building (3 ideas+first feature, 4 DB+auth+profile combined, 5 AI, 6 design+gamification,
+  7 real users). Days 8–10 = demo prep (8 adjustments/no-new-topic, 9 rehearsal+pitch, 10 Demo Day).
+- **Combine fast days:** kids move fast — DB + auth + profile is ONE day; gamification (streaks/XP/
+  leaderboards) is folded into the design/polish day, never its own day.
 - **Idea ambition:** the goal is a product with real-world impact that **could be sold** —
-  hard but achievable in Lovable in 2 weeks. Lead with sellable SaaS/tools + games people
+  hard but achievable with Codex in 2 weeks. Lead with sellable SaaS/tools + games people
   actually play & pay for (Wordle-type daily puzzles, viral quizzes, idle). NOT throwaway
   childish clones. Games are welcome (incl. Flappy/arcades) — only avoid heavy 3D and
-  realtime multiplayer. Idea bank = `💡 Идеи`.
+  realtime multiplayer (scope, not tooling). Idea bank = `💡 Идеи`.
   Filter test: "would someone pay $1 for this?" Beginners may start simple as a ramp.
-- **Lovable CAN do games (reversed 2026-05-26).** Earlier the deck banned Snake/Flappy
-  ("needs a game engine") — that was wrong, verified in Lovable. Lovable handles real
-  games: Flappy-style arcades, clickers, runners, puzzles, quizzes. Only **heavy 3D** and
-  **realtime multiplayer / low-latency co-op** are out. Be generous with game ideas.
 - **Kahoot quizzes are real files**, not just a schedule line. Ready quizzes live in
   `kahoot/dayN/` (this repo): `quiz.md` (readable + ✅ answers) and `quiz.csv` (Kahoot import).
   They are ALSO mirrored in Notion under the **🎲 Kahoot — квизы по дням** folder (one sub-page
   per day, questions + ✅ answers). When you add/change a day's quiz, update both repo + Notion.
-- **Ship daily:** 10 releases in 10 days — by 15:00 each day a new live version is up. The
-  product must always work, even on crutches.
+- **Ship daily:** every building day ends with a `git push` → Vercel auto-deploys → a fresh live
+  URL by 15:00. The product must always work, even on crutches.
 
 ## Images in slides — always check size & shape, pick the right layout
 
@@ -113,7 +137,7 @@ never break layout, and need no asset. Add a new visual type to `Visual.jsx` if 
 one. **Don't reach for a photo just to fill space.**
 
 Use a real photo ONLY when the slide genuinely needs a specific real-world capture (a UI
-screenshot of Lovable, a news/deepfake image, the MVP cartoon). In that case:
+screenshot of Codex / VSCode / Supabase / Vercel, the MVP cartoon). In that case:
 - If the photo already exists in `public/`, use it (with `w`/`h`, right layout per the rules above).
 - If it must be supplied later, leave a **placeholder** — the `visual: 'описание…'` string renders
   a `📸 Скрин сюда:` card. Describe exactly what photo goes there so it's obvious what to capture.

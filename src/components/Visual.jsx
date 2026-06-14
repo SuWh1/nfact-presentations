@@ -157,7 +157,7 @@ export default function Visual({ visual }) {
           <span className="v-login__label">Пароль</span>
           <span className="v-login__value">···············</span>
         </div>
-        <div className="v-login__hint">lovable.dev — вписать перед занятием</div>
+        <div className="v-login__hint">вписать перед занятием</div>
       </div>
     );
   }
