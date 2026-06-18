@@ -483,6 +483,28 @@ const day4 = {
       note: 'Это не AI — это защита базы. Всегда проси Codex включать RLS.',
     },
     {
+      kicker: 'Вход через Google',
+      title: 'Кнопка «Войти через Google»',
+      body: 'Удобнее пароля: один клик — и человек вошёл. Настраивается один раз: Supabase ↔ Google. Пошаговая инструкция — в Notion дня 4.',
+      visual: {
+        type: 'flow',
+        steps: [
+          { emoji: '🟢', title: 'Supabase', sub: 'включи Google, скопируй callback URL' },
+          { emoji: '☁️', title: 'Google Cloud', sub: 'создай ключи, вставь callback URL' },
+          { emoji: '🔑', title: 'Назад в Supabase', sub: 'вставь Client ID + Secret' },
+        ],
+      },
+      note: 'Настройку делаем по шагам из Notion (ментор поможет). На слайде — просто идея.',
+    },
+    {
+      kicker: 'Промпт · Google-вход',
+      title: 'Добавь кнопку Google',
+      prompt: {
+        text: "Добавь на экран входа кнопку «Войти через Google»: supabase.auth.signInWithOAuth({ provider: 'google' }). После входа показывай профиль. Обычный вход по email оставь.",
+      },
+      note: 'Сначала включи Google в Supabase (шаги в Notion) — иначе кнопка выдаст ошибку redirect.',
+    },
+    {
       kicker: 'Промпт · данные',
       title: 'Сохраняй мои данные',
       prompt: {
