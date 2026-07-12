@@ -324,16 +324,24 @@ VITE_SUPABASE_ANON_KEY=sb_publishable_твой-ключ`,
     },
     {
       kicker: 'Шаг 4 · таблица',
-      title: 'Базу создаёт Codex командами',
-      body: 'Команды запоминать не нужно. Пойми смысл: войти → выбрать проект → применить готовую миграцию.',
+      title: 'Codex подключает базу сам',
+      body: 'Codex запускает все команды. Ты только подтверждаешь вход в браузере и вводишь пароль базы прямо в терминал, если он спросит.',
       visual: {
         type: 'flow',
         steps: [
-          { emoji: '🔑', title: 'db:login', sub: 'вход в Supabase' },
-          { emoji: '🔗', title: 'db:link', sub: 'выбрать твой проект' },
-          { emoji: '🗄️', title: 'db:push', sub: 'создать таблицу' },
+          { emoji: '🔑', title: 'db:login', sub: 'Codex запускает → ты подтверждаешь браузер' },
+          { emoji: '🔗', title: 'db:link', sub: 'Codex сам берёт project ref из URL' },
+          { emoji: '🗄️', title: 'db:push', sub: 'dry-run → RLS → применить → проверить' },
         ],
       },
+    },
+    {
+      kicker: 'Промпт · Supabase CLI',
+      title: 'Codex делает всё сам',
+      prompt: {
+        text: 'Подключи Supabase полностью сам по промпту «День 2 — подключи Supabase» из CODEX_SETUP.md. Запусти npm run db:login и остановись только чтобы я подтвердил браузер. Сам возьми project ref из VITE_SUPABASE_URL и сделай npm run db:link -- --project-ref REF. Если нужен пароль — попроси ввести его прямо в терминал. Затем npm run db:push -- --dry-run → проверь миграции и RLS → npm run db:push -- --yes → проверь таблицу entries. Не проси access token и не показывай секреты.',
+      },
+      note: 'Никаких общих Supabase token. Персональный token даёт доступ ко всем проектам аккаунта.',
     },
     {
       kicker: 'Шаг 5 · keep-alive',

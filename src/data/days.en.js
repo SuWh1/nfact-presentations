@@ -211,13 +211,18 @@ const englishSlides = {
       visual: { code: 'VITE_SUPABASE_URL=https://your-project.supabase.co\nVITE_SUPABASE_ANON_KEY=sb_publishable_your-key' },
     },
     {
-      kicker: 'Step 4 · table', title: 'Codex creates the database with commands',
-      body: 'Do not memorize the commands. Understand the sequence: sign in → select your project → apply the prepared migration.',
+      kicker: 'Step 4 · table', title: 'Codex connects the database',
+      body: 'Codex runs every command. You only approve the browser login and type the database password directly into the terminal if asked.',
       visual: { steps: [
-        { title: 'db:login', sub: 'sign in to Supabase' },
-        { title: 'db:link', sub: 'select your project' },
-        { title: 'db:push', sub: 'create the table' },
+        { title: 'db:login', sub: 'Codex starts it → you approve the browser' },
+        { title: 'db:link', sub: 'Codex gets the project ref from the URL' },
+        { title: 'db:push', sub: 'dry-run → RLS → apply → verify' },
       ] },
+    },
+    {
+      kicker: 'Prompt · Supabase CLI', title: 'Codex does everything',
+      prompt: { text: 'Connect Supabase completely using the “Day 2 — connect Supabase” prompt in CODEX_SETUP.md. Run npm run db:login and pause only for me to approve the browser. Read the project ref from VITE_SUPABASE_URL and run npm run db:link -- --project-ref REF. If a password is required, ask me to type it directly into the terminal. Then run npm run db:push -- --dry-run → review migrations and RLS → npm run db:push -- --yes → verify the entries table. Never request an access token or display credentials.' },
+      note: 'Never share one Supabase token. A personal token can access every project available to that account.',
     },
     {
       kicker: 'Step 5 · keep-alive', title: 'Keep the database awake',
