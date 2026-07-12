@@ -44,6 +44,13 @@ a {
   padding: 72px 28px 96px;
 }
 
+.home__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
 .home__logo {
   width: 64px;
   height: 64px;
@@ -125,6 +132,44 @@ a {
   margin-top: 10px;
   font-size: 13px;
   color: var(--ink-soft);
+}
+
+.language-switcher {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-elev);
+}
+
+.language-switcher__button {
+  min-width: 42px;
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.language-switcher__button:hover,
+.language-switcher__button.is-active {
+  background: var(--clay);
+  color: #fff;
+}
+
+.language-switcher--compact {
+  padding: 2px;
+}
+
+.language-switcher--compact .language-switcher__button {
+  min-width: 32px;
+  padding: 5px 7px;
+  font-size: 11px;
 }
 
 /* ---------- Deck ---------- */
@@ -864,6 +909,12 @@ a {
   .bar__day { display: none; }
   .bar a,
   .bar button { font-size: 12px; }
+  .bar__side--right { gap: 6px; }
+  .bar__side--right > button { display: none; }
+  .language-switcher--compact .language-switcher__button {
+    min-width: 28px;
+    padding: 4px 6px;
+  }
 
   .slide {
     padding: 4vh 6vw;

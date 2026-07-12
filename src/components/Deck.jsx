@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slide from './Slide.jsx';
+import LanguageSwitcher from './LanguageSwitcher.jsx';
 
-export default function Deck({ day }) {
+export default function Deck({ day, language, onLanguageChange, labels }) {
   const [i, setI] = useState(0);
   const total = day.slides.length;
   const touchX = useRef(null);
@@ -53,7 +54,7 @@ export default function Deck({ day }) {
     <div className="deck" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <div className="bar">
         <div className="bar__side">
-          <Link to="/">← Дни</Link>
+          <Link to={language === 'en' ? '/?lang=en' : '/'}>{labels.allDays}</Link>
         </div>
         <div className="bar__center">
           <img
@@ -66,8 +67,9 @@ export default function Deck({ day }) {
           </span>
         </div>
         <div className="bar__side bar__side--right">
-          <button onClick={toggleFullscreen} title="Полный экран (F)">
-            ⛶ Экран
+          <LanguageSwitcher language={language} onChange={onLanguageChange} compact />
+          <button onClick={toggleFullscreen} title={labels.fullscreenTitle}>
+            {labels.fullscreen}
           </button>
           <span className="counter">
             {i + 1} / {total}
@@ -75,7 +77,7 @@ export default function Deck({ day }) {
         </div>
       </div>
 
-      <Slide slide={slide} />
+      <Slide slide={slide} language={language} />
 
       <a
         className="notion-qr"

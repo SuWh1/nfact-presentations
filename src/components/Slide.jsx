@@ -1,7 +1,7 @@
 import Prompt from './Prompt.jsx';
 import Visual from './Visual.jsx';
 
-export default function Slide({ slide }) {
+export default function Slide({ slide, language }) {
   const { kicker, title, hero, body, list, pills, visual, note, prompt, split } = slide;
 
   const text = (
@@ -33,7 +33,7 @@ export default function Slide({ slide }) {
 
       {!split ? <Visual visual={visual} /> : null}
 
-      {prompt ? <Prompt label={prompt.label} text={prompt.text} /> : null}
+      {prompt ? <Prompt label={prompt.label} text={prompt.text} language={language} /> : null}
 
       {note ? <div className="slide__note">{note}</div> : null}
     </>
