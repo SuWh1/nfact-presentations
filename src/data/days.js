@@ -314,11 +314,11 @@ npm install`,
     {
       kicker: 'Шаг 3 · Supabase',
       title: 'Создай базу и возьми 2 ключа',
-      body: 'Supabase → New project. Затем Project Settings → API: скопируй Project URL и anon public key в файл .env.local.',
+      body: 'Supabase → New project. Затем Project Settings → API Keys: скопируй Project URL и Publishable key в файл .env.local.',
       visual: {
         type: 'code',
         code: `VITE_SUPABASE_URL=https://твой-проект.supabase.co
-VITE_SUPABASE_ANON_KEY=твой-anon-ключ`,
+VITE_SUPABASE_ANON_KEY=sb_publishable_твой-ключ`,
       },
       note: '.env.local не коммить — файл уже добавлен в .gitignore.',
     },
@@ -336,7 +336,15 @@ VITE_SUPABASE_ANON_KEY=твой-anon-ключ`,
       },
     },
     {
-      kicker: 'Шаг 5 · проверка',
+      kicker: 'Шаг 5 · keep-alive',
+      title: 'Пусть база не засыпает',
+      prompt: {
+        text: 'Настрой keep-alive полностью по промпту из CODEX_SETUP.md. Убедись, что db:push применён, затем запусти npm run keep-awake:setup. Если команда упала — сам исправь причину и повторяй до строки Keep-alive verified со ссылкой. Если нужен gh auth login — позови ментора. Значения из .env.local и service_role никогда не показывай и не используй.',
+      },
+      note: 'Этот шаг делаем после db:push. Ребёнок не дебажит: Codex заканчивает только после зелёного GitHub Action.',
+    },
+    {
+      kicker: 'Шаг 6 · проверка',
       title: 'Сначала запусти локально',
       body: 'Введи npm run dev, открой ссылку из терминала, зарегистрируйся и добавь запись. Сохранилось? Только тогда публикуем.',
       visual: { type: 'code', code: 'npm run dev' },

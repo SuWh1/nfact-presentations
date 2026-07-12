@@ -206,9 +206,9 @@ const englishSlides = {
     },
     {
       kicker: 'Step 3 · Supabase', title: 'Create the database and copy 2 keys',
-      body: 'Supabase → New project. Then open Project Settings → API and copy Project URL and the anon public key into .env.local.',
+      body: 'Supabase → New project. Then open Project Settings → API Keys and copy Project URL and the Publishable key into .env.local.',
       note: 'Never commit .env.local. It is already listed in .gitignore.',
-      visual: { code: 'VITE_SUPABASE_URL=https://your-project.supabase.co\nVITE_SUPABASE_ANON_KEY=your-anon-key' },
+      visual: { code: 'VITE_SUPABASE_URL=https://your-project.supabase.co\nVITE_SUPABASE_ANON_KEY=sb_publishable_your-key' },
     },
     {
       kicker: 'Step 4 · table', title: 'Codex creates the database with commands',
@@ -220,7 +220,12 @@ const englishSlides = {
       ] },
     },
     {
-      kicker: 'Step 5 · test', title: 'Run it locally first',
+      kicker: 'Step 5 · keep-alive', title: 'Keep the database awake',
+      prompt: { text: 'Configure keep-alive completely using the prompt in CODEX_SETUP.md. Confirm that db:push has been applied, then run npm run keep-awake:setup. If it fails, diagnose and fix the cause and repeat until it prints Keep-alive verified with a run URL. If gh auth login is required, call the mentor. Never display values from .env.local or use service_role.' },
+      note: 'Do this after db:push. The child does not debug it: Codex finishes only after a successful GitHub Action.',
+    },
+    {
+      kicker: 'Step 6 · test', title: 'Run it locally first',
       body: 'Run npm run dev, open the terminal URL, register, and add an entry. Did it save? Only then should you publish.',
     },
     { kicker: 'Concept', title: 'Vercel publishes your website', body: 'Vercel takes your GitHub code and creates a live site. Every push automatically updates it.' },

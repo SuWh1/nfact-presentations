@@ -874,6 +874,17 @@ a {
 .bar a:hover,
 .bar button:hover { color: var(--clay); }
 
+.bar .language-switcher__button.is-active,
+.bar .language-switcher__button.is-active:hover {
+  background: var(--clay);
+  color: #fff;
+}
+
+.language-switcher__button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--clay) 40%, transparent);
+  outline-offset: 2px;
+}
+
 .progress {
   position: absolute;
   bottom: 0;
