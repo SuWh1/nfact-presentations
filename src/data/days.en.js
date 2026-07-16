@@ -19,11 +19,11 @@ function mergeTranslation(source, translation) {
 const meta = {
   1: { title: 'Welcome + Setup', subtitle: 'Tools and accounts' },
   2: { title: 'Vercel + Codex', subtitle: 'Go live and connect AI' },
-  3: { title: 'Build Your Idea', subtitle: 'First features + the Codex loop' },
-  4: { title: 'Data + Auth + Profile', subtitle: 'Memory, sign-in, profile' },
+  3: { title: 'Your Idea + Data + Auth', subtitle: 'Your idea, memory, accounts' },
+  4: { title: 'Design + UX', subtitle: 'Beautiful and easy to use' },
   5: { title: 'AI Inside', subtitle: 'Real AI in your product' },
-  6: { title: 'Design + Retention', subtitle: 'Premium and engaging' },
-  7: { title: 'Real Users', subtitle: 'Onboarding and feedback' },
+  6: { title: 'Real Users', subtitle: 'Onboarding and feedback' },
+  7: { title: 'App on Phone', subtitle: 'PWA + final polish' },
   8: { title: 'Adjustments', subtitle: 'Polish and stabilize' },
   9: { title: 'Rehearsal + Pitch', subtitle: 'Prepare for the stage' },
   10: { title: 'Demo Day', subtitle: 'The finale' },
@@ -298,19 +298,11 @@ const englishSlides = {
       prompt: { text: 'This is my project: Vite + React + TypeScript + Supabase + Vercel. Supabase is already configured in src/lib/supabase.ts. Use only this setup, write TypeScript with small components, and run npm run build at the end. Confirm that you understand, then wait for my task.' },
       note: 'Paste this into Codex once at the beginning. The full version is in CODEX_SETUP.md.',
     },
-    { kicker: 'End of Day 2', title: 'Online, Codex ready, idea chosen', body: 'Your URL is live, your AI programmer is connected, and your idea is clear. Tomorrow you build its first feature.' },
+    { kicker: 'End of Day 2', title: 'Online, Codex ready, idea chosen', body: 'Your URL is live, your AI programmer is connected, and your idea is clear. Tomorrow the template becomes your idea—and gains memory and accounts.' },
   ],
   3: [
-    { kicker: 'Day 3', title: '🧱 Build Your Idea' },
-    { kicker: 'Recap', title: 'The idea is chosen—now build', body: 'Everyone has a live URL, Codex is connected, and the idea is clear. Today you turn the starter screen into your product and add its first features.' },
-    {
-      kicker: 'Today’s goal', title: 'By 15:00—your idea at a live URL',
-      visual: { steps: [
-        { title: 'Your screen', sub: 'the template became yours' },
-        { title: 'Main mechanic', sub: 'the core idea works' },
-        { title: 'Live version', sub: 'the push succeeded' },
-      ] },
-    },
+    { kicker: 'Day 3', title: '🗄️ Your Idea + Memory' },
+    { kicker: 'Recap', title: 'Today the template becomes yours', body: 'Your URL is live, Codex is connected, and the idea is chosen. Today the starter screen turns into your idea—and the app learns to remember data and create accounts.' },
     {
       kicker: 'Core skill', title: 'How to write a good prompt',
       visual: { items: [
@@ -320,8 +312,8 @@ const englishSlides = {
       note: 'Unsure about wording? Ask ChatGPT to rewrite your idea as one clear Codex prompt.',
     },
     {
-      kicker: 'Step 1 · first feature', title: 'Adapt it to your idea',
-      prompt: { text: 'Adapt the starter screen to my idea: [describe the idea in 1–2 sentences]. Replace the example “entries” with [quiz questions / habits / places / cards]. Keep sign-in and Supabase unchanged. Create a new migration (npm run db:new) with the fields I need; I will run npm run db:push.' },
+      kicker: 'Step 1 · your idea', title: 'Adapt it to your idea',
+      prompt: { text: 'Adapt the starter screen to my idea: [describe the idea in 1–2 sentences]. Build the main screen with [main action: quiz questions / habits / game field / cards]. Create a new migration (npm run db:new) with the fields I need; I will run npm run db:push.' },
       note: '📋 Replace everything in [brackets]. Daily templates are in CODEX_SETUP.md.',
     },
     {
@@ -332,21 +324,6 @@ const englishSlides = {
         { title: 'DO NOT commit', lines: ['white screen', 'red errors', 'fix it first'] },
       ] },
     },
-    { kicker: 'Step 2 · core', title: 'Add the main mechanic', body: 'What makes your idea unique? Describe one main action: quiz screen, clicker, or habit form. One task per prompt.', note: 'Do not build everything at once. Start with the main screen, then add one feature at a time.' },
-    {
-      kicker: 'If you get stuck', title: 'Be more specific with Codex',
-      visual: { head: ['Problem', 'What to write'], rows: [
-        ['It built the wrong thing', 'WHAT / LOOK / ACTION'],
-        ['The last change caused an error', 'paste the error and ask for a fix'],
-        ['The idea is too large', 'keep one main screen today'],
-      ] },
-    },
-    { kicker: 'Your turn', title: 'Build your idea', list: ['1. Adapt the starter to your idea', '2. Add the main mechanic', '3. Test → push → open the live URL'], note: 'By 15:00 your idea must be live. It can be rough; it just needs to work.' },
-    { kicker: 'End of Day 3', title: 'Your idea is already online', body: 'Tomorrow we teach it to remember data and support real accounts.' },
-  ],
-  4: [
-    { kicker: 'Day 4', title: '🗄️ Memory and Accounts' },
-    { kicker: 'Recap', title: 'Yesterday: idea. Today: memory.', body: 'The application should remember scores, progress, and user entries. Every person should have their own account.' },
     {
       kicker: 'Concept', title: 'A database is like Excel tables',
       body: 'A row is one record, such as a question or habit. A column is a field, such as text, date, or points. Supabase stores it for you.',
@@ -407,12 +384,76 @@ const englishSlides = {
     },
     { kicker: 'How it works', title: 'Codex creates and applies a migration', body: 'A new table begins as a migration file. Codex writes it and applies it with db:push. Understand the purpose; do not memorize the command.', note: '“relation does not exist” means the migration was not applied.', visual: { code: 'db:push   → create the table from the migration' } },
     { kicker: 'Test', title: 'Sign out and sign in again', body: 'Add data → sign out → sign in. Is the data still there? Your database is working for real.' },
-    { kicker: 'Your turn', title: 'Give the application memory', list: ['1. Save the main data in Supabase', '2. Add a profile', '3. Apply the migration → test sign-in → push'], note: 'By 15:00 the application remembers data and supports accounts.' },
-    { kicker: 'End of Day 4', title: 'The application remembers you', body: 'Tomorrow you add real AI inside your product.' },
+    { kicker: 'Your turn', title: 'Your idea + memory', list: ['1. Adapt the starter to your idea', '2. Save the main data in Supabase', '3. Add a profile → test sign-in → push'], note: 'By 15:00 YOUR idea lives at your URL—and it remembers data.' },
+    { kicker: 'End of Day 3', title: 'It is your product now—and it remembers', body: 'Tomorrow we make it beautiful and easy to use.' },
+  ],
+  4: [
+    { kicker: 'Day 4', title: '🎨 Design and UX' },
+    { kicker: 'Recap', title: 'It works—now make it pleasant', body: 'The app runs and remembers data. Today we make it pleasant to use: a clear path, a clean look.' },
+    {
+      kicker: 'Concept', title: 'UI and UX are not the same',
+      visual: { items: [
+        { title: 'UI — how it looks', lines: ['colors and fonts', 'buttons and spacing', 'first impression'] },
+        { title: 'UX — how it feels', lines: ['clear where to tap', 'nothing annoys', 'the user reaches the goal'] },
+      ] },
+      note: 'A beautiful but confusing app gets closed. You need both.',
+    },
+    {
+      kicker: 'UX', title: 'A user path with no dead ends',
+      body: 'Walk through your product with a new person’s eyes: open → understand what it is → do the main action.',
+      visual: { steps: [
+        { title: 'Open', sub: 'instantly clear what it is' },
+        { title: 'Understand', sub: 'obvious where to tap' },
+        { title: 'Do', sub: 'main action in 2–3 clicks' },
+      ] },
+    },
+    { kicker: 'UI', title: 'Three rules of a clean look', list: ['Few colors: background + text + ONE accent', 'One font: Inter / Manrope', 'Air: don’t cram everything together, align things'], note: 'Open claude.ai or linear.app—clean, calm, nothing extra.' },
+    { kicker: 'Choose a style', title: 'A gallery of real designs', body: 'Choose YOUR style from real products so every project looks different.', note: 'github.com/VoltAgent/awesome-design-md' },
+    {
+      kicker: 'Prompt · app', title: 'Clean it up',
+      prompt: { text: 'Improve the design and UX of my app. UI: background [#code], dark text, ONE accent color [#code], Inter font, whitespace and alignment, one consistent style on all screens. UX: the first screen makes it obvious what this is and where to tap; the main action is no more than 2–3 clicks away; remove anything confusing.' },
+    },
+    {
+      kicker: 'Building a game?', title: 'Game design = game feel',
+      body: 'For a game, “looking good” is not a palette—it is the feel: clear controls, instant feedback, a readable score.',
+      visual: { steps: [
+        { title: 'Controls', sub: 'clear without instructions' },
+        { title: 'Feedback', sub: 'animation/sound on every action' },
+        { title: 'Screens', sub: 'start → game → game over → “Play again”' },
+      ] },
+    },
+    {
+      kicker: 'Prompt · game', title: 'Level up the game feel',
+      prompt: { text: 'Improve my game’s UX, don’t touch the game mechanics. Add: a start screen with the title and a “Play” button, clear controls with a hint, instant feedback on actions (animation/effect), a big readable score, a game-over screen with the result and a “Play again” button. Menus and buttons in one clean style.' },
+    },
+    { kicker: 'Retention', title: 'Why will they open it tomorrow?', body: 'A product without a hook is single-use. Add a reason to return.', note: 'What NEW thing awaits the user each day?' },
+    {
+      kicker: 'Hooks', title: 'Four proven mechanics',
+      visual: { steps: [
+        { title: 'Streak', sub: 'consecutive active days' },
+        { title: 'XP', sub: 'points and levels' },
+        { title: 'Leaderboard', sub: 'compare with a friend' },
+        { title: 'Daily', sub: 'a new challenge every day' },
+      ] },
+    },
+    {
+      kicker: 'Prompt · hook', title: 'Add a reason to return',
+      prompt: { text: 'Add this retention mechanic: [daily streak / XP and levels / leaderboard / daily challenge]. Save progress in Supabase and show it on the home screen and profile. Visible, but not shouty.' },
+    },
+    { kicker: 'Your turn', title: 'Easy to use + beautiful', list: ['1. Walk the new-user path—remove dead ends', '2. Apply a clean look (or game feel)', '3. Add one hook → test on a phone → push'] },
+    {
+      kicker: 'Final check', title: 'Do not break a working product',
+      visual: { head: ['If this happened', 'Tell Codex'], rows: [
+        ['It became a rainbow', 'keep one accent + calm background'],
+        ['Design broke the game', 'restore gameplay; change only menus'],
+        ['Mobile layout is broken', 'fix the mobile layout'],
+      ] },
+    },
+    { kicker: 'End of Day 4', title: 'The product is pleasant to use', body: 'Tomorrow you add real AI inside.' },
   ],
   5: [
     { kicker: 'Day 5', title: '🤖 Add Real AI' },
-    { kicker: 'Recap', title: 'It remembers—now make it intelligent', body: 'Today your product becomes intelligent with AI like ChatGPT built into YOUR idea.' },
+    { kicker: 'Recap', title: 'Beautiful and easy to use—now add intelligence', body: 'Today your product becomes intelligent with AI like ChatGPT built into YOUR idea.' },
     { kicker: 'Ideas', title: 'What AI can do inside', list: ['Quiz—generate questions on any topic', 'Utility—give advice based on user data', 'Character chat—respond in character', 'Review—find mistakes and explain them'] },
     {
       kicker: 'Concept', title: 'AI is a smart intern',
@@ -443,51 +484,10 @@ const englishSlides = {
       ] },
     },
     { kicker: 'Your turn', title: 'Make the product intelligent', list: ['1. Add one AI feature', '2. Configure its role and restrictions', '3. Ask a classmate to break it → push'], note: 'By 15:00 real AI works inside your product.' },
-    { kicker: 'End of Day 5', title: 'Your product became intelligent', body: 'Week one is complete. Next: design, retention, and real users.' },
+    { kicker: 'End of Day 5', title: 'Your product became intelligent', body: 'Tomorrow real people will use it and give feedback.' },
   ],
   6: [
-    { kicker: 'Day 6', title: '🎨 Premium and Engaging' },
-    { kicker: 'Recap', title: 'It works and thinks—now make it beautiful', body: 'Today has two goals: make the product look premium without making it loud, and add a reason to return.' },
-    {
-      kicker: 'Design', title: 'Premium versus cheap', note: 'Open claude.ai or linear.app. This is how billion-dollar products look.',
-      visual: { items: [
-        { title: 'Cheap', lines: ['five bright colors', 'neon and gradients', 'everything shouts'] },
-        { title: 'Premium', lines: ['one accent color', 'plenty of space', 'calm and confident'] },
-      ] },
-    },
-    { kicker: 'Design', title: 'Three rules for a premium look', list: ['Few colors: background + text + ONE accent', 'One font: Inter or Manrope', 'Plenty of space: do not squeeze everything together'] },
-    { kicker: 'Choose a style', title: 'A gallery of real designs', body: 'Choose YOUR style from real products so every project looks different.', note: 'github.com/VoltAgent/awesome-design-md' },
-    {
-      kicker: 'Prompt · design', title: 'Make it look premium',
-      prompt: { text: 'Redesign the application with a calm, premium style and no neon. Use [#code] for the background, dark text, and ONE accent color [#code] for primary buttons. Add generous spacing, the Inter font, and rounded buttons. Apply one consistent style to every screen. If this is a game, do not change gameplay; redesign only the surrounding menus and screens.' },
-    },
-    { kicker: 'Retention', title: 'Why will they open it tomorrow?', body: 'A game without a hook is used once. Add a reason to return.', note: 'Answer one question: what NEW thing awaits the user each day?' },
-    {
-      kicker: 'Hooks', title: 'Four proven mechanics',
-      visual: { steps: [
-        { title: 'Streak', sub: 'consecutive active days' },
-        { title: 'XP', sub: 'points and levels' },
-        { title: 'Leaderboard', sub: 'compare with a friend' },
-        { title: 'Daily', sub: 'a new challenge every day' },
-      ] },
-    },
-    {
-      kicker: 'Prompt · retention', title: 'Add a reason to return',
-      prompt: { text: 'Add this retention mechanic: [daily streak / XP and levels / leaderboard / daily challenge]. Save progress in Supabase and show it on the home screen and profile. Make it noticeable while keeping the calm design style.' },
-    },
-    { kicker: 'Your turn', title: 'Beautiful + engaging', list: ['1. Apply one premium style', '2. Add one retention mechanic', '3. Test on a phone → push'] },
-    {
-      kicker: 'Final check', title: 'Do not break a working product',
-      visual: { head: ['If this happened', 'Tell Codex'], rows: [
-        ['It became a rainbow', 'keep one accent + calm background'],
-        ['Design broke the game', 'restore gameplay; change only menus'],
-        ['Mobile layout is broken', 'fix the mobile layout'],
-      ] },
-    },
-    { kicker: 'End of Day 6', title: 'The product looks premium and feels engaging', body: 'Tomorrow real people will use it and give feedback.' },
-  ],
-  7: [
-    { kicker: 'Day 7', title: '🚀 Real Users' },
+    { kicker: 'Day 6', title: '🚀 Real Users' },
     { kicker: 'Recap', title: 'Ready for people', body: 'The product works, looks good, and has intelligence. Today real users try it and show you what to fix.' },
     { kicker: 'Concept', title: 'Understandable in 30 seconds', body: 'A new user must immediately understand what the product is and what to do. Otherwise, they leave.', note: 'useronboard.com shows how leading applications welcome new users.' },
     { kicker: 'Onboarding', title: 'Five parts of a good welcome', list: ['A one-sentence welcome screen', 'A hint on the primary button', 'Friendly empty states', 'Positive feedback after the first action', 'Works without instructions'] },
@@ -505,7 +505,40 @@ const englishSlides = {
       ] },
     },
     { kicker: 'Your turn', title: 'Release it to people', list: ['1. Add onboarding and empty states', '2. Give the URL to 3–5 people', '3. Record three problems', '4. Fix at least one → push'] },
-    { kicker: 'End of Day 7', title: 'Real people use your product', body: 'Three days remain: polish, rehearsal, and Demo Day.' },
+    { kicker: 'End of Day 6', title: 'Real people use your product', body: 'Tomorrow is the final level: your website becomes an app on the phone.' },
+  ],
+  7: [
+    { kicker: 'Day 7', title: '📱 App on Your Phone' },
+    { kicker: 'Recap', title: 'The final level', body: 'People already use your product. Today we turn the website into a real app—with its own icon on the phone.' },
+    {
+      kicker: 'Concept', title: 'PWA — a website as an app',
+      body: 'A website can be installed on a phone: its own icon on the home screen, opens full-screen without the browser. That is a PWA.',
+      visual: { steps: [
+        { title: 'Manifest', sub: 'name + icon + color' },
+        { title: 'Install', sub: '“Add to Home Screen”' },
+        { title: 'Icon', sub: 'like a real app' },
+      ] },
+    },
+    {
+      kicker: 'Prompt · PWA', title: 'Turn the site into an app',
+      prompt: { text: 'Turn my app into a PWA: add a manifest with the name [product name], a short name, a theme color and 192/512 icons (generate a simple icon with [emoji/letter] on a [#code] background). Add the meta tags for installing on iPhone (apple-touch-icon). Check that npm run build passes and the phone shows “Add to Home Screen”.' },
+    },
+    {
+      kicker: 'Polish', title: 'The small things that make it a product',
+      visual: { head: ['Detail', 'What it gives'], rows: [
+        ['Tab title + favicon', 'not “Vite App”, but your product'],
+        ['Link preview (OG tags)', 'a nice card in WhatsApp/Telegram'],
+        ['Loading states', '“Thinking…” instead of emptiness'],
+        ['Clear errors', 'what happened and what to do'],
+      ] },
+    },
+    {
+      kicker: 'Prompt · polish', title: 'Finish the details',
+      prompt: { text: 'Add the final polish: 1) tab title and favicon for my product; 2) OG tags (title, description, image) so the link looks nice in messengers; 3) loading states wherever data loads; 4) friendly error messages. Don’t break any logic.' },
+    },
+    { kicker: 'Phone check', title: 'With a finger, not a mouse', body: 'Install your app on your phone and walk the whole path with your finger: are the buttons big enough? did anything shift? does the game work with touch?', note: 'Have a friend install your app on their phone—that is the final test.' },
+    { kicker: 'Your turn', title: 'Website → app', list: ['1. Add the PWA and install it on your phone', '2. Polish: tab, preview, loading states', '3. Have a friend install it → push'], note: 'By 15:00 your icon is on a phone’s home screen.' },
+    { kicker: 'End of Day 7', title: 'You have a real app', body: 'The product is ready. Ahead: polish, rehearsal, and Demo Day.' },
   ],
   8: [
     { kicker: 'Day 8', title: '🔧 Polish and Stabilize' },
@@ -520,7 +553,7 @@ const englishSlides = {
       visual: { head: ['Check', 'Done?'], rows: [
         ['Opens from the live URL without errors', '☐'], ['Sign-in and data work', '☐'],
         ['The main feature is reliable', '☐'], ['A new user understands it', '☐'],
-        ['Looks premium and works on a phone', '☐'],
+        ['Clean, easy to use, works on a phone', '☐'],
       ] },
     },
     { kicker: 'Important', title: 'Test on a phone', body: 'Judges and parents will open the URL on their phones. Does everything fit? Can you press every button? Fix anything misaligned.' },
