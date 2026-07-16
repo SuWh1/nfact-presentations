@@ -88,11 +88,17 @@ Batch 2 (24 kids) runs on the **real developer stack** — flat monthly cost, re
   then ~3.5h of self-building split around a 30-min lunch, 5-min morning exercise, daily
   Kahoot, mid-morning 15-min Trivia, phones only at lunch. Lives in mentor pages +
   `Шаблон дня` + For Parents (not on the site).
-- **10-day shape (batch 2):** Days 1–2 = setup (install + accounts + first deploy live).
-  Days 3–7 = building (3 ideas+first feature, 4 DB+auth+profile combined, 5 AI, 6 design+gamification,
-  7 real users). Days 8–10 = demo prep (8 adjustments/no-new-topic, 9 rehearsal+pitch, 10 Demo Day).
-- **Combine fast days:** kids move fast — DB + auth + profile is ONE day; gamification (streaks/XP/
-  leaderboards) is folded into the design/polish day, never its own day.
+- **10-day shape (batch 2, revised 2026-07-16):** Days 1–2 = setup (install + accounts + first
+  deploy live + idea picked). Days 3–7 = building (3 your-idea+DB+auth+profile combined,
+  4 design+UX, 5 AI, 6 real users, 7 PWA/app-on-phone + final polish). Days 8–10 = demo prep
+  (8 adjustments/no-new-topic, 9 rehearsal+pitch, 10 Demo Day). There is NO standalone
+  "build your idea" day — the first-feature prompt is the warm-up of day 3.
+- **Combine fast days:** kids move fast — your-idea + DB + auth + profile is ONE day;
+  gamification (streaks/XP/leaderboards) is folded into the design/UX day, never its own day.
+- **Design day is UX/UI, not «дорого».** The goal is good-looking + good user flow/experience,
+  NOT a "premium/expensive" aesthetic — never frame it as «дорого vs дёшево». Many kids build
+  2D/3D games where a calm SaaS palette doesn't apply: the games track teaches game feel
+  (clear controls, instant feedback, readable score, start/game-over screens) instead.
 - **Idea ambition:** the goal is a product with real-world impact that **could be sold** —
   hard but achievable with Codex in 2 weeks. Lead with sellable SaaS/tools + games people
   actually play & pay for (Wordle-type daily puzzles, viral quizzes, idle). NOT throwaway
