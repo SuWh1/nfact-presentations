@@ -314,45 +314,45 @@ npm install`,
     {
       kicker: 'Шаг 3 · Supabase',
       title: 'Создай базу и возьми 2 ключа',
-      body: 'Supabase → New project. Затем Project Settings → API Keys: скопируй Project URL и Publishable key в файл .env.local.',
+      body: 'Supabase → New project. Затем Project Settings → API Keys: скопируй Project URL и Publishable key в файл .env.',
       visual: {
         type: 'code',
         code: `VITE_SUPABASE_URL=https://твой-проект.supabase.co
 VITE_SUPABASE_ANON_KEY=sb_publishable_твой-ключ`,
       },
-      note: '.env.local не коммить — файл уже добавлен в .gitignore.',
+      note: '.env не коммить — файл уже добавлен в .gitignore.',
     },
     {
-      kicker: 'Шаг 4 · таблица',
-      title: 'Codex подключает базу сам',
-      body: 'Codex запускает все команды. Ты только подтверждаешь вход в браузере и вводишь пароль базы прямо в терминал, если он спросит.',
+      kicker: 'Шаг 4 · подключи базу',
+      title: 'Две команды в терминале',
+      body: 'Вводи сам, по одной. REF — из адреса твоей базы: https://REF.supabase.co. Пароль базы вводится прямо в терминал — символы не видны, это нормально.',
       visual: {
-        type: 'flow',
-        steps: [
-          { emoji: '🔑', title: 'db:login', sub: 'Codex запускает → ты подтверждаешь браузер' },
-          { emoji: '🔗', title: 'db:link', sub: 'Codex сам берёт project ref из URL' },
-          { emoji: '🗄️', title: 'db:push', sub: 'dry-run → RLS → применить → проверить' },
-        ],
+        type: 'code',
+        code: `npm run db:login                       ← вход (подтверди в браузере)
+npm run db:link -- --project-ref REF   ← привязать проект`,
       },
+      note: 'В терминал вставляй только команды из блоков кода — не обычный текст.',
     },
     {
-      kicker: 'Промпт · Supabase CLI',
-      title: 'Codex делает всё сам',
-      prompt: {
-        text: 'Подключи Supabase полностью сам по промпту «День 2 — подключи Supabase» из CODEX_SETUP.md. Запусти npm run db:login и остановись только чтобы я подтвердил браузер. Сам возьми project ref из VITE_SUPABASE_URL и сделай npm run db:link -- --project-ref REF. Если нужен пароль — попроси ввести его прямо в терминал. Затем npm run db:push -- --dry-run → проверь миграции и RLS → npm run db:push -- --yes → проверь таблицу entries. Не проси access token и не показывай секреты.',
+      kicker: 'Шаг 5 · таблицы',
+      title: 'Применяем миграции',
+      body: 'Миграции — файлы с описанием таблиц. Сначала смотрим, что будет применено, потом применяем.',
+      visual: {
+        type: 'code',
+        code: `npm run db:push -- --dry-run   ← посмотреть, что применится
+npm run db:push -- --yes       ← создать таблицы (entries)`,
       },
-      note: 'Никаких общих Supabase token. Персональный token даёт доступ ко всем проектам аккаунта.',
+      note: 'Увидел «Remote database is up to date» — всё уже готово.',
     },
     {
-      kicker: 'Шаг 5 · keep-alive',
+      kicker: 'Шаг 6 · keep-alive',
       title: 'Пусть база не засыпает',
-      prompt: {
-        text: 'Настрой keep-alive полностью по промпту из CODEX_SETUP.md. Убедись, что db:push применён, затем запусти npm run keep-awake:setup. Если команда упала — сам исправь причину и повторяй до строки Keep-alive verified со ссылкой. Если нужен gh auth login — позови ментора. Значения из .env.local и service_role никогда не показывай и не используй.',
-      },
-      note: 'Этот шаг делаем после db:push. Ребёнок не дебажит: Codex заканчивает только после зелёного GitHub Action.',
+      body: 'Одна команда: проверит базу, сохранит настройки в GitHub Secrets и запустит ежедневный робот-пинг. Успех = строка «Keep-alive verified» со ссылкой.',
+      visual: { type: 'code', code: 'npm run keep-awake:setup' },
+      note: 'Ошибка про gh? Один раз: gh auth login → GitHub.com → HTTPS → браузер. Потом снова setup.',
     },
     {
-      kicker: 'Шаг 6 · проверка',
+      kicker: 'Шаг 7 · проверка',
       title: 'Сначала запусти локально',
       body: 'Введи npm run dev, открой ссылку из терминала, зарегистрируйся и добавь запись. Сохранилось? Только тогда публикуем.',
       visual: { type: 'code', code: 'npm run dev' },
@@ -388,7 +388,7 @@ VITE_SUPABASE_ANON_KEY=sb_publishable_твой-ключ`,
         type: 'table',
         head: ['Что видишь', 'Что проверить'],
         rows: [
-          ['Белый экран / ошибка ключей', '.env.local и 2 переменные'],
+          ['Белый экран / ошибка ключей', '.env и 2 переменные'],
           ['relation entries does not exist', 'npm run db:push'],
           ['Локально работает, Vercel пустой', 'Environment Variables в Vercel'],
           ['git push просит логин', 'войти в GitHub внутри VSCode'],
